@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class QuizActivity extends AppCompatActivity {
 
     private static final String TAG = "QuizActivity";
@@ -113,7 +115,8 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void printGrade() {
-        Toast.makeText(this, RightGrade + "", Toast.LENGTH_SHORT).show();
+        DecimalFormat df = new DecimalFormat("#.00");
+        mQuestionTextView.setText(String.valueOf(df.format(((double)RightGrade / FullGrade) * 100)));
         mNextButton.setVisibility(View.GONE);
         mPrevButton.setVisibility(View.GONE);
     }
